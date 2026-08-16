@@ -39,6 +39,11 @@ The project consists of the following Jupyter Notebooks:
     *   Re-verifying class distribution math and providing visual proof of the imbalance.
     *   Setting up the foundation for predictive modeling (e.g., using `RandomForestClassifier` from `sklearn`).
 
+3.  **`poster.ipynb`**
+    *   Generates key visualizations and statistics used for the project poster.
+    *   Calculates and visualizes amount feature statistics.
+    *   Produces charts including Bar Chart (Class Imbalance), Histogram (Amount Distribution), Boxplot (Outlier Detection), Scatter Plot (Time vs Amount), and Heatmap (Feature Correlation).
+
 ## 🚀 Getting Started
 
 ### Prerequisites
