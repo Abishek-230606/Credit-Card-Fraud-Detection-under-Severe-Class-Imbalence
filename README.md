@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains an exploratory data analysis (EDA) and feature selection pipeline for detecting fraudulent credit card transactions. Credit card fraud detection is a classic anomaly detection problem, often characterized by extreme class imbalance. The objective of this project is to analyze the data, understand the underlying distributions, and prepare the dataset for building a robust machine learning classification model that can accurately identify fraudulent transactions despite their rarity.
+This repository contains an exploratory data analysis (EDA), feature selection pipeline, and mathematical model implementations for detecting fraudulent credit card transactions. Credit card fraud detection is a classic anomaly detection problem, often characterized by extreme class imbalance. The objective of this project is to analyze the data, understand the underlying distributions, and build a robust machine learning classification model that can accurately identify fraudulent transactions despite their rarity.
 
 ## 🔒 Important Note: PCA Encrypted Dataset
 
@@ -24,25 +24,16 @@ The dataset contains transactions made by European cardholders in September 2013
 
 ## 📂 Repository Contents
 
-The project consists of the following Jupyter Notebooks:
+The project has been refactored into distinct modules:
 
-1.  **`dataset_statistics.ipynb`**
-    *   Comprehensive Exploratory Data Analysis (EDA).
-    *   Statistical summaries of PCA components, `Time`, and `Amount`.
-    *   Visualizations of the severe class imbalance.
-    *   Analysis of transaction amount distributions (linear and logarithmic scales).
-    *   Temporal analysis of transactions to find patterns between legitimate and fraudulent activities.
+### 1. Dataset Statistics and Feature Selection (`/dataset_statistics_and_feature_selection`)
+*   **`dataset_statistics.ipynb`**: Comprehensive Exploratory Data Analysis (EDA). Statistical summaries of PCA components, visualizations of the severe class imbalance, and temporal analysis of transactions.
+*   **`feature_selection.ipynb`**: Preliminary steps for data preprocessing and feature selection. Provides correlation heatmaps and sets up the foundation for predictive modeling.
+*   **`graphs_of_dataset_statistics/poster.ipynb`**: Generates key high-quality visualizations (Bar Charts, Histograms, Boxplots, Scatter Plots, and Heatmaps) used for presentation posters.
 
-2.  **`feature_selection.ipynb`**
-    *   Preliminary steps for data preprocessing and feature selection.
-    *   Checking for null values and missing data.
-    *   Re-verifying class distribution math and providing visual proof of the imbalance.
-    *   Setting up the foundation for predictive modeling (e.g., using `RandomForestClassifier` from `sklearn`).
-
-3.  **`poster.ipynb`**
-    *   Generates key visualizations and statistics used for the project poster.
-    *   Calculates and visualizes amount feature statistics.
-    *   Produces charts including Bar Chart (Class Imbalance), Histogram (Amount Distribution), Boxplot (Outlier Detection), Scatter Plot (Time vs Amount), and Heatmap (Feature Correlation).
+### 2. Mathematical Models (`/mathematical_model`)
+*   **`mathematical_model.ipynb`**: Implementation of techniques to handle class imbalance directly from scratch. Includes a custom mathematical implementation of **SMOTE** (Synthetic Minority Over-sampling Technique) and **Cost-Sensitive Logistic Regression** utilizing weighted Log Loss to penalize missed frauds.
+*   **`gpu_math_model.ipynb`**: A GPU-accelerated version of the mathematical model using **CuPy** to run Gradient Descent on Nvidia GPUs, falling back to NumPy (CPU) gracefully if CUDA libraries are unavailable. Features fully vectorized CPU SMOTE generation.
 
 ## 🚀 Getting Started
 
@@ -55,6 +46,7 @@ Ensure you have Python 3.x installed along with the following libraries:
 *   `seaborn`
 *   `scikit-learn`
 *   `jupyter`
+*   `cupy` (optional, for GPU acceleration in the math model)
 
 You can install the dependencies using pip:
 ```bash
@@ -64,12 +56,12 @@ pip install pandas numpy matplotlib seaborn scikit-learn jupyter
 ### Running the Notebooks
 
 1.  Clone this repository to your local machine.
-2.  Ensure that the `creditcard.csv` dataset is placed in the root directory of the project.
+2.  Ensure that the `creditcard.csv` dataset is placed inside the `dataset_statistics_and_feature_selection/` directory.
 3.  Start the Jupyter Notebook server:
     ```bash
     jupyter notebook
     ```
-4.  Open `dataset_statistics.ipynb` or `feature_selection.ipynb` and run the cells sequentially.
+4.  Navigate to the respective directories to open and run the notebooks sequentially.
 
 ## 🛠️ Technologies Used
 
@@ -77,9 +69,9 @@ pip install pandas numpy matplotlib seaborn scikit-learn jupyter
 *   **Pandas & NumPy** - Data manipulation and numerical operations
 *   **Matplotlib & Seaborn** - Data visualization
 *   **Scikit-Learn** - Machine learning utilities
+*   **CuPy** - GPU-accelerated computing
 
 ## 📈 Future Work
 
-*   Implement techniques to handle class imbalance (e.g., SMOTE, ADASYN, or undersampling).
-*   Train baseline anomaly detection models (Isolation Forest, Local Outlier Factor).
-*   Train robust classifiers (Random Forest, XGBoost) and evaluate them using appropriate metrics like Precision-Recall AUC (PR-AUC) instead of standard Accuracy.
+*   Train and compare other baseline anomaly detection models (Isolation Forest, Local Outlier Factor).
+*   Train robust classifiers (Random Forest, XGBoost) and evaluate them using appropriate metrics like Precision-Recall AUC (PR-AUC) alongside our custom Cost-Sensitive Logistic Regression.
