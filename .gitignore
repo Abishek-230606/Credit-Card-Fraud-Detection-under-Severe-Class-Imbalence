@@ -1,2 +1,12 @@
 .idea/
 creditcard.csv
+
+# Generated graph images are kept locally for analysis/PPT use,
+# but are not committed to the repository.
+**/graphs/
+**/graphs_of_dataset_statistics/
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.webp
