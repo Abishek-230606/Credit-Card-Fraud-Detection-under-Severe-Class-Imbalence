@@ -1,0 +1,9 @@
+Model,Group,PR-AUC,ROC-AUC,Best F1,Precision@75,Recall@1%,Precision,Recall,F1,MCC,TP,FP,FN,TN,Operating point
+K-means+SMOTE (cluster fraud-rate),Unsupervised,0.7342,0.9636,0.8058,0.7467,0.8533,0.875,0.7467,0.8058,0.8081,56,8,19,56879,best-F1 threshold
+K-means+SMOTE (centroid distance),Unsupervised,0.0197,0.9087,0.0674,0.0,0.2267,0.0405,0.2,0.0674,0.0875,15,355,60,56532,best-F1 threshold
+"GMM (EM, diag, legit-only)",Unsupervised,0.3443,0.9643,0.4961,0.4533,0.76,0.5926,0.4267,0.4961,0.5023,32,22,43,56865,best-F1 threshold
+"GMM (full cov, sklearn)",Unsupervised,0.7035,0.976,0.7519,0.7333,0.8,0.8621,0.6667,0.7519,0.7578,50,8,25,56879,best-F1 threshold
+GMM two-class (SMOTE fraud vs legit),Unsupervised,0.7325,0.9675,0.75,0.7333,0.8133,1.0,0.6,0.75,0.7744,45,0,30,56887,best-F1 threshold
+HMM+SMOTE (forward-backward P(Fraud)),Unsupervised,0.679,0.9656,0.7714,0.7333,0.7867,0.8308,0.72,0.7714,0.7731,54,11,21,56876,best-F1 threshold
+HMM+SMOTE (Viterbi decision),Unsupervised,,,,,,0.9184,0.6,0.7258,0.7421,45,4,30,56883,model decision
+Random Forest (supervised ref.),Supervised reference,0.8112,0.9893,0.8462,0.7733,0.8533,1.0,0.7333,0.8462,0.8562,55,0,20,56887,best-F1 threshold
